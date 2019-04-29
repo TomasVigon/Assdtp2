@@ -1,0 +1,53 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>11d349fc-417b-4098-8635-899f5f9a35fd</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>TP_2_MIDI.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>TP_2_MIDI</Name>
+    <RootNamespace>TP_2_MIDI</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="synths\base_synth.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="synths\bell.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="synths\clarinet.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="synths\trumpet.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="synths\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TP_2_MIDI.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="synths\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
