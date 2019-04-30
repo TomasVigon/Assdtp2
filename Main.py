@@ -19,8 +19,22 @@ import synths
 
 print("'La Buroracia es todo aquello que no es la esencia de las ideas' -Ari 2019 ")
 
-print("Insertar nombre de Archivo.mid")
+#---------------------------------------Comunicacion con el usuario: Elegir Archivo y Activar Espectograma-------
+
+print("Insertar nombre de Archivo")
 nombredeArchivo = input()
+print("Espectograma ON? Y/N")
+rta=input()
+if(rta=='Y' or rta=='y'):
+  BooleanEspectograma=1
+elif(rta=='n' or rta=='N'):
+  BooleanEspectograma=0
+else:
+  print("hiciste cualquiera monki")
+  exit()
+
+#----------------------------------------------------------------------------------------------------------------
+
 mid = mido.MidiFile(str(nombredeArchivo +'.mid'))
 Time=0
 ticks = mid.ticks_per_beat
@@ -34,6 +48,12 @@ fs = 44100
 def note2Frec(n):
   f=((2**((n-69)/12)))*440
   return f
+def Espectograma(vector,fs,*window):
+  f,t,sx=signal.spectrogram(vector,fs,window)
+  plt.pcolormesh(t, f, sx)
+  plt.show()
+  return
+
 
 class Parametros:
   velocidad = None
@@ -112,9 +132,9 @@ print(nombreDeTracks)
 
 
 while (len(nombreDeInstrumentos)!=len(nombreDeTracks)):
-  jeje= input()
-  if(jeje=='bell' or jeje=='clarinet' or jeje=='trumpet' or jeje==''):
-    nombreDeInstrumentos.append(jeje)
+  instr= input()
+  if(instr=='bell' or instr=='clarinet' or instr=='trumpet' or instr==''):
+    nombreDeInstrumentos.append(instr)
   else:
     print("Hiciste cualquiera monki")
     exit()
@@ -165,3 +185,7 @@ FileName = 'CancionExportada.wav'
 print('Exporting 2 wav',FileName)
 wavData = np.asarray(50000*Cancion,dtype = np.int16)       
 write(FileName,fs, wavData)
+
+#if(BooleanEspectograma):
+ # print("Expectograma: ")
+ # Espectograma(Cancion,fs)
